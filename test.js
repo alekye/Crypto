@@ -76,9 +76,9 @@ function mod_inverse(num, mn) {
 	return ret;
 }
 
-// var ret = mod_inverse(4913, 30960);
+var ret = mod_inverse(4913, 30960);
 // var ret = mod_inverse(104729, 15485863);
-// console.log(ret);
+console.log(ret);
 
 // 快速幂取模运算
 function fast_power(a, n, mod) {
@@ -120,5 +120,5 @@ function max_factor(a, b) {
 	return b;
 }
 
-console.log(max_factor(35, 77))
+// console.log(max_factor(35, 77))
 
