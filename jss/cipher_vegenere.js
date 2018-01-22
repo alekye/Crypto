@@ -1,48 +1,67 @@
 var alpha = "abcdefghijklmnopqrstuvwxyz";
 
-function shift_encrypt(text, off) {
+// 维吉尼亚密码加密
+function vigenere_encrypt(text, key) {
 	// body...
 	var lowerText = text.toLowerCase();
+	var lowerKey = key.toLowerCase();
 	var cipher = "";
 	for (var i = 0; i < lowerText.length; i++) {
-		var index = lowerText.charCodeAt(i) - 97 + off;
-		index += 26;	// 防止负余数
-		index %= 26;
-		cipher += alpha.charAt(index);
+		var kIndex = i % lowerKey.length;
+		var charIndex = lowerText.charCodeAt(i) - 97;
+		var keyIndex = lowerKey.charCodeAt(kIndex) - 97;
+		var encryptIndex = (charIndex + keyIndex) % 26;
+		cipher += alpha.charAt(encryptIndex);
 	}
 	return cipher.toUpperCase();
 }
 
-function shift_decrypt(cipher, off) {
+// 维吉尼亚密码解密
+function vigenere_decrypt(cipher, key) {
 	// body...
-	var text = shift_encrypt(cipher, off);
-	return text.toLowerCase();
+	var lowerCipher = cipher.toLowerCase();
+	var lowerKey = key.toLowerCase();
+	var text = "";
+	for (var i = 0; i < lowerCipher.length; i++) {
+		var kIndex = i % lowerKey.length;
+		var charIndex = lowerCipher.charCodeAt(i) - 97;
+		var keyIndex = lowerKey.charCodeAt(kIndex) - 97;
+		var decryptIndex = (charIndex - keyIndex + 26) % 26;
+		text += alpha.charAt(decryptIndex);
+	}
+	return text;
 }
 
 // 绑定加密按钮事件
 document.querySelector('#btn_encrypt').addEventListener('click', function () {
-	var text = document.querySelector('#input_text').value;
-	if (text.length > 0) {
-		var d = document.getElementById('myconsole');
-    	// begin encrypt
-    	var result = "";
-    	for (var i = 1; i < 26; i++) {
-    		result += '<p>offset = ' + i + ' : ' + shift_encrypt(text, i) + '</p>'; 
-    	}
-    	d.innerHTML = result;
+	var d = document.getElementById('myconsole');
+	var key = document.querySelector('#input_key').value;
+	if (key.length > 0) {
+		// d.innerHTML = "<p>" + key + "</p>";
+		var text = document.querySelector('#input_text').value;
+		if (text.length > 0) {
+			d.innerHTML = "<p>" + vigenere_encrypt(text, key) + "</p>";
+		} else {
+			d.innerHTML = "<p>加密内容不能为空！</p>";	
+		}
+	} else {
+		d.innerHTML = "<p>秘钥不能为空！</p>";
 	}
 });
 
 // 绑定解密按钮事件
 document.querySelector('#btn_decrypt').addEventListener('click', function () {
-	var cipher = document.querySelector('#input_text').value;
-	if (cipher.length > 0) {
-		var d = document.getElementById('myconsole');
-    	// begin encrypt
-    	var result = "";
-    	for (var i = 1; i < 26; i++) {
-    		result += '<p>offset = ' + i + ' : ' + shift_decrypt(cipher, i) + '</p>'; 
-    	}
-    	d.innerHTML = result;
+	var d = document.getElementById('myconsole');
+	var key = document.querySelector('#input_key').value;
+	if (key.length > 0) {
+		// d.innerHTML = "<p>" + key + "</p>";
+		var cipher = document.querySelector('#input_cipher').value;
+		if (cipher.length > 0) {
+			d.innerHTML = "<p>" + vigenere_decrypt(cipher, key) + "</p>";
+		} else {
+			d.innerHTML = "<p>解密内容不能为空！</p>";	
+		}
+	} else {
+		d.innerHTML = "<p>解密不能为空！</p>";
 	}
 });
