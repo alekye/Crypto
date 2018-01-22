@@ -45,7 +45,7 @@ document.querySelector('#btn_encrypt').addEventListener('click', function () {
 			d.innerHTML = "<p>加密内容不能为空！</p>";	
 		}
 	} else {
-		d.innerHTML = "<p>秘钥不能为空！</p>";
+		d.innerHTML = "<p>请输入正确的秘钥！</p>";
 	}
 });
 
@@ -62,6 +62,6 @@ document.querySelector('#btn_decrypt').addEventListener('click', function () {
 			d.innerHTML = "<p>解密内容不能为空！</p>";	
 		}
 	} else {
-		d.innerHTML = "<p>解密不能为空！</p>";
+		d.innerHTML = "<p>请输入正确的秘钥！</p>";
 	}
 });

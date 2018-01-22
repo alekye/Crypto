@@ -27,7 +27,7 @@ document.querySelector('#btn_encrypt').addEventListener('click', function () {
     	// begin encrypt
     	var result = "";
     	for (var i = 1; i < 26; i++) {
-    		result += '<p>offset = ' + i + ' : ' + shift_encrypt(text, i) + '</p>'; 
+    		result += '<div class="weui-cell"><p>offset11 = ' + i + ' : ' + shift_encrypt(text, i) + '</p></div>'; 
     	}
     	d.innerHTML = result;
 	}
@@ -41,7 +41,7 @@ document.querySelector('#btn_decrypt').addEventListener('click', function () {
     	// begin encrypt
     	var result = "";
     	for (var i = 1; i < 26; i++) {
-    		result += '<p>offset = ' + i + ' : ' + shift_decrypt(cipher, i) + '</p>'; 
+    		result += '<div class="weui-cell"><p>offset22 = ' + i + ' : ' + shift_decrypt(cipher, i) + '</p></div>'; 
     	}
     	d.innerHTML = result;
 	}
