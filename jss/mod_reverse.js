@@ -98,3 +98,27 @@ document.querySelector('#btn_submit').addEventListener('click', function () {
         d.innerHTML = "请输入正确的数字";
     }
 });
+
+
+// 绑定验证按钮事件
+document.querySelector('#btn_verify').addEventListener('click', function () {
+    var d = document.getElementById('myconsole');
+
+    var str_x = document.querySelector('#input_x').value;
+    var str_y = document.querySelector('#input_y').value;
+    var str_z = document.querySelector('#input_z').value;
+
+    if (str_x.length > 0 && str_y.length > 0 && str_z.length > 0) {
+        var num_x = parseInt(str_x);
+        var num_y = parseInt(str_y);
+        var num_z = parseInt(str_z);
+        
+        var remainder = (num_x * num_y)%num_z;
+        var mstr = '<div class="weui-cell"><p><font color="red">余数 = ' + remainder + '</font></p></div>';
+        d.innerHTML = mstr;
+    } else {
+        d.innerHTML = "请输入正确的数字";
+    }
+});
+
+// export default mod_inverse;
