@@ -125,14 +125,19 @@ function fast_power(a, n, mod) {
 	return result;
 }
 
-function rsa_decrypt(cipher, a, fn) {
+function rsa_decrypt(cipher, a, n) {
 	var alpha = "abcdefghijklmnopqrstuvwxyz";
 	// body...
 	var plainText = "";
 	var data = cipher.split(" ");
 	for (var i in data) {
 		var encryptCode = data[i];
-		var decryptCode = fast_power(encryptCode, a, fn);
+		
+		var decryptCode = fast_power(encryptCode, a, n);
+		// plainText = decryptCode;
+
+		// 解密 模26编码
+		// var decryptCode = encryptCode;
 		// mod 26 decrypt
 		var right = decryptCode % 26;
 		var quotient = Math.floor(decryptCode/26);
@@ -169,7 +174,7 @@ document.querySelector('#btn_submit').addEventListener('click', function () {
         	var num_a = mod_inverse_num(num_b, fin);
         	mstr += '<div class="weui-cell"><p>所以 a = b^(-1)MODφ(n) = ' + num_b + '^(-1)MOD' + fin + ' = ' + num_a + '</p></div>';
 			mstr += '<div class="weui-cell"><p>设密文为：y，则明文：x = y^aMODφ(n)，解密如下：</p></div>';
-			mstr += '<div class="weui-cell"><p>' + rsa_decrypt(cipher, num_a, fin) + '</p></div>';
+			mstr += '<div class="weui-cell"><p>' + rsa_decrypt(cipher, num_a, num_n) + '</p></div>';
         } else {
         	if (prime.length > 0) {
         		mstr += '<div class="weui-cell"><p><font color="red">发生错误: n = '+ prime.join(" * ") + ' 不是两个素数的和。</font></p></div>'; 
