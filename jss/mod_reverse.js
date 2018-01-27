@@ -121,4 +121,22 @@ document.querySelector('#btn_verify').addEventListener('click', function () {
     }
 });
 
+// 取模运算
+document.querySelector('#btn_mod').addEventListener('click', function () {
+    // body...
+    var d = document.getElementById('myconsole');
+
+    var str_c = document.querySelector('#input_c').value;
+    var str_d = document.querySelector('#input_d').value;
+    if (str_c.length > 0 && str_d.length > 0) {
+        var num_c = parseInt(str_c);
+        var num_d = parseInt(str_d);
+        var mod = num_c % num_d;
+        var mstr = '<div class="weui-cell"><p><font color="red">余数 = ' + mod + '</font></p></div>';
+        d.innerHTML = mstr;
+    } else {
+        d.innerHTML = "请输入正确的数字";
+    }
+});
+
 // export default mod_inverse;
