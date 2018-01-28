@@ -279,3 +279,67 @@ document.querySelector('#btn_submit').addEventListener('click', function () {
         d.innerHTML = "请输入正确的数字";
     }
 });
+
+document.querySelector('#btn_add2').addEventListener('click', function () {
+    var d = document.getElementById('myconsole');
+
+    var str_a = document.querySelector('#input_a').value;
+    var str_b = document.querySelector('#input_b').value;
+    var str_p = document.querySelector('#input_p').value;
+
+    var str_x1 = document.querySelector('#input_x1').value;
+    var str_y1 = document.querySelector('#input_y1').value;
+    var str_x2 = document.querySelector('#input_x2').value;
+    var str_y2 = document.querySelector('#input_y2').value;
+
+    var na = parseInt(str_a);
+    var nb = parseInt(str_b);
+    var np = parseInt(str_p);
+    var x1 = parseInt(str_x1);
+    var x2 = parseInt(str_x2);
+    var y1 = parseInt(str_y1);
+    var y2 = parseInt(str_y2);
+
+    var pt1 = {};
+    pt1.x = x1;
+    pt1.y = y1;
+    var pt2 = {};
+    pt2.x = x2;
+    pt2.y = y2;
+    var pt = point_add(pt1, pt2, na, np);
+
+    var mstr = "(" + pt.x + ", " + pt.y + ")";
+    d.innerHTML = mstr;
+});    
+
+document.querySelector('#btn_multiple').addEventListener('click', function () {
+    var d = document.getElementById('myconsole');
+
+    var str_a = document.querySelector('#input_a').value;
+    var str_b = document.querySelector('#input_b').value;
+    var str_p = document.querySelector('#input_p').value;
+
+    var str_x = document.querySelector('#input_x').value;
+    var str_y = document.querySelector('#input_y').value;
+    var str_t = document.querySelector('#input_t').value;
+
+    var na = parseInt(str_a);
+    var nb = parseInt(str_b);
+    var np = parseInt(str_p);
+    var x = parseInt(str_x);
+    var y = parseInt(str_y);
+    var t = parseInt(str_t);
+
+    var pt1 = {};
+    pt1.x = x;
+    pt1.y = y;
+
+    var pt = pt1;
+    for (var i = 0; i < t-1; i++) {
+        pt = point_add(pt, pt1, na, np);
+    }
+    // var pt = point_add(pt1, pt2, na, np);
+
+    var mstr = "(" + pt.x + ", " + pt.y + ")";
+    d.innerHTML = mstr;
+});  

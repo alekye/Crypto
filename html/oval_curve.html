@@ -36,7 +36,59 @@
 
         <a href="javascript:;" id="btn_submit" class="weui-btn weui-btn_primary">求解椭圆曲线上点的个数(参考课本P204)</a>
 
-        
+
+        <!-- 两点相加 -->
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">x1：</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" id="input_x1" pattern="[0-9]*" placeholder="请输入数字">
+            </div>
+        </div>
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">y1：</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" id="input_y1" pattern="[0-9]*" placeholder="请输入数字">
+            </div>
+        </div>
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">x2：</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" id="input_x2" pattern="[0-9]*" placeholder="请输入数字">
+            </div>
+        </div>
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">y2：</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" id="input_y2" pattern="[0-9]*" placeholder="请输入数字">
+            </div>
+        </div>
+
+        <a href="javascript:;" id="btn_add2" class="weui-btn weui-btn_primary">两点相加(需要输入a,b,p)</a>
+
+        <!-- 单点的倍数 -->
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">x：</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" id="input_x" pattern="[0-9]*" placeholder="请输入数字">
+            </div>
+        </div>
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">y：</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" id="input_y" pattern="[0-9]*" placeholder="请输入数字">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">倍数：</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" id="input_t" pattern="[0-9]*" placeholder="请输入数字">
+            </div>
+        </div>
+        <a href="javascript:;" id="btn_multiple" class="weui-btn weui-btn_primary">单点相乘(需要输入a,b,p)</a>
 
         <div id="myconsole" class="weui-cells weui-cells_form"></div>
 
