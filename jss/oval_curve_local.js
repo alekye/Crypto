@@ -168,26 +168,21 @@ function point_add(pt1, pt2, a, p) {
 	return pt;
 }
 
-// var pt1 = {};
-// pt1.x = 2;
-// pt1.y = 7;
+var pt1 = {};
+pt1.x = 2;
+pt1.y = 6;
 
-// // var pt2 = {};
-// // pt2.x = 13;
-// // pt2.y = 11;
-// // console.log(point_add(pt1, pt2, 1, 19));
+var pt2 = {};
+pt2.x = 2;
+pt2.y = 6;
 
-// var pt2 = {};
-// pt2.x = 2;
-// pt2.y = 7;
+// console.log(point_add(pt1, pt2, 1, 11));
 
-// // console.log(point_add(pt1, pt2, 1, 11));
-
-// for (var i = 0; i < 15; i++) {
-// 	console.log(pt1, pt2);
-// 	pt1 = point_add(pt1, pt2, 1, 11);
-// 	console.log(pt1);
-// }
+for (var i = 0; i < 54; i++) {
+	// console.log(pt1, pt2);
+	pt1 = point_add(pt1, pt2, 1, 127);
+	console.log(i+2, pt1);
+}
 
 // 求椭圆曲线上点的个数
 function oval_points_count(a, b, p) {
@@ -227,55 +222,3 @@ function oval_points_count(a, b, p) {
 // console.log(points);
 
 // console.log("count = " + oval_points_count(1, 1, 19));
-
-// 绑定加密按钮事件
-document.querySelector('#btn_submit').addEventListener('click', function () {
-    var d = document.getElementById('myconsole');
-
-	var str_a = document.querySelector('#input_a').value;
-    var str_b = document.querySelector('#input_b').value;
-    var str_p = document.querySelector('#input_p').value;
-
-    if (str_a.length > 0 && str_b.length > 0 && str_p.length > 0) {
-        var num_a = parseInt(str_a);
-        var num_b = parseInt(str_b);
-        var num_p = parseInt(str_p);
-
-        var mstr = "<table border='1'>";
-        mstr += "<tr>";
-        mstr += '<td align="center" width="50px">x</td>';
-        mstr += '<td align="center" width="200px">x^3 + '+num_a+'x + '+num_b+'mod'+num_p+'</td>';
-        mstr += '<td align="center" width="150px">是二次剩余吗</td>';
-        mstr += '<td align="center" width="50px">y</td>';
-        mstr += "</tr>";
-
-        var points = oval_points_count(num_a, num_b, num_p);
-
-        var pt_str = ["(0,0)"];
-        for (var idx in points) {
-        	mstr += "<tr>";
-        	mstr += '<td align="center" width="50px">' + points[idx].x + '</td>';
-        	mstr += '<td align="center" width="200px">'+ points[idx].z + '</td>';
-        	mstr += '<td align="center" width="150px">'+ points[idx].z2 + '</td>';
-        	var y1 = points[idx].y1;
-        	if (y1 !== undefined) {
-        		mstr += '<td align="center" width="50px">' + points[idx].y1 + ', ' + points[idx].y2 + '</td>';
-
-        		var pstr1 = "(" + points[idx].x + ", " + points[idx].y1 + ")";
-        		pt_str.push(pstr1);
-        		var pstr2 = "(" + points[idx].x + ", " + points[idx].y2 + ")";
-        		pt_str.push(pstr2);
-        	}
-        	mstr += "</tr>";
-        }
-
-        mstr += "</table>";
-        mstr += '<div class="weui-cell"><p><font color="red">所以，共有 ' + pt_str.length + ' 个点，分别是: ' + pt_str.join(", ") +'</font></p></div>';
-
-        d.innerHTML = mstr;
-        // var factor = max_factor(num_a, num_b);
-        // d.innerHTML = factor;
-    } else {
-        d.innerHTML = "请输入正确的数字";
-    }
-});

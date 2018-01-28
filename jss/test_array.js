@@ -30,13 +30,26 @@ function fast_power(a, n, mod) {
 	return result;
 }
 
-// for (var i = 0; i < 31847; i++) {
+// for (var i = 1; i < 31847; i++) {
 // 	// console.log(i);
-// 	var remain = fast_power(7, i, 31847);
+// 	var remain = fast_power(5, i, 31847);
 // 	if (remain == 18074) {
 // 		console.log(i);
 // 	}
 // }
+
+// 暴力求解幂指数
+function baoli_power(bm, p, remain) {
+    for (var i = 1; i < p; i++) {
+        var left = fast_power(bm, i, p);
+        if (left == remain) {
+            return i;
+        }
+    }
+}
+
+// console.log(baoli_power(5, 31847, 23972));
+console.log(baoli_power(5, 31847, 25703));
 
 
 // for (var i = 0; i < 19; i++) {
